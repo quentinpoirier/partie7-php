@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,14 +16,21 @@
 
     <form action="index.php" method="get">
         <select name="civil" size="1">
-            <option>Mr
-            <option>Mme
+            <option value="" disabled selected>--</option>
+            <option value="Mr">Mr</option>
+            <option value="Mme">Mme</option>
         </select>
-        <p>Votre nom : <input type="text" name="lastname" /></p>
-        <p>Votre prénom : <input type="text" name="firstname" /></p>
-        <p><input type="submit" value="OK"></p>
+        <label for="lastname">Votre nom :</label>
+        <input type="text" name="lastname" pattern="[a-zA-Z]+" required>
+        <label for="lastname">Votre prénom :</label>
+        <input type="text" name="firstname" pattern="[a-zA-Z]+" required>
+        <input type="submit" value="OK" name="submit">
     </form>
-    <?php echo 'Bonjour ' . $_GET['civil'] . ' ' . $_GET['firstname'] . ' ' . $_GET['lastname'] . ' !';?>
+    <?php 
+    if (isset($_GET['submit'])) {
+        echo 'Bonjour ' . $_GET['civil'] . ' ' . $_GET['firstname'] . ' ' . $_GET['lastname'] . ' !';
+    }
+    ?>
     
 </body>
 </html>
